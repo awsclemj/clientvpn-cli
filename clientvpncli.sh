@@ -476,28 +476,28 @@ create_route() {
 # Main execution starts here
 if [ $# -eq 1 ]; then
 
-	case ${1} in
-		--build-pki)
-		    check_easyrsa_install
+    case ${1} in
+        --build-pki)
+            check_easyrsa_install
             build_pki
             ;;
-		--build-server)
-			check_pki
-			build_server
+        --build-server)
+            check_pki
+            build_server
 			;;
-		--build-client)
-			check_pki
-			build_client
+        --build-client)
+            check_pki
+            build_client
 			;;
-		--upload-cert)
-			upload_cert
-			;;
+        --upload-cert)
+            upload_cert
+            ;;
 		--update-config)
 			update_config
 			;;
-		--download-config)
-			download_config
-			;;
+        --download-config)
+            download_config
+            ;;
         --create-endpoint)
             create_endpoint
             ;;
