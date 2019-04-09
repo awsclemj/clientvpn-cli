@@ -484,17 +484,17 @@ if [ $# -eq 1 ]; then
         --build-server)
             check_pki
             build_server
-			;;
+            ;;
         --build-client)
             check_pki
             build_client
-			;;
+            ;;
         --upload-cert)
             upload_cert
             ;;
-		--update-config)
-			update_config
-			;;
+        --update-config)
+            update_config
+            ;;
         --download-config)
             download_config
             ;;
@@ -510,10 +510,10 @@ if [ $# -eq 1 ]; then
         --create-route)
             create_route
             ;;
-		*)
-			echo "${0}: Unknown argument \""${1}"\"" >&2
-			;;
-	esac
+        *)
+            echo "${0}: Unknown argument \""${1}"\"" >&2
+            ;;
+    esac
 else 
-	echo >&2 "Invalid number of arguments passed."
+    echo >&2 "Invalid number of arguments passed."
 fi	
