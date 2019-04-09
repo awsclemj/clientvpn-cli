@@ -5,12 +5,12 @@
 3. [Dependencies](#depends)
 4. [Options](#options)
 5. [Getting Started](#getstart)
-    5.1 [Script setup](#setup)
-    5.2 [Building a PKI](#pki)
-    5.3 [Uploading your certificates to Amazon Certificate Manager (ACM)](#upload)
-    5.4 [Downloading your client configuration file from AWS](#download)
-    5.5 [Appending mutual authentication parameters to the client configuration file](#mutual)
-    5.6 [Creating a Client VPN Endpoint](#create)
+    1. [Script setup](#setup)
+    2. [Building a PKI](#pki)
+    3. [Uploading your certificates to Amazon Certificate Manager (ACM)](#upload)
+    4. [Downloading your client configuration file from AWS](#download)
+    5. [Appending mutual authentication parameters to the client configuration file](#mutual)
+    6. [Creating a Client VPN Endpoint](#create)
 
 ## Introduction <a name="intro"></a>
 
