@@ -25,19 +25,19 @@ check_easyrsa_install () {
     else
         read -p "$FILE not found... would you like me to install EasyRSA in $HOME? (Y/N) " answer
 	
-	    case $answer in
-		    Y|y)
-		        install_easyrsa
+        case $answer in
+            Y|y)
+                install_easyrsa
                 ;;
             N|n)
-		        echo "Please install the latest version of EasyRSA using git."
-		        exit 1
+                echo "Please install the latest version of EasyRSA using git."
+                exit 1
                 ;;
             *)
                 echo >&2 "Input \""$answer"\" not recognized. Aborting."
                 exit 1
                 ;;
-	    esac
+        esac
     fi
 }
 
@@ -365,6 +365,7 @@ create_endpoint() {
 
 associate_subnet() {
     # Takes in user input and associates specified subnets to a CVPN endpoint
+    check_aws
     read -p "Please enter the region where your Client VPN endpoint resides (e.g. us-east-1) " region
     aws ec2 describe-client-vpn-endpoints --region "$region" --query \
             ClientVpnEndpoints[].'{Description:Description,EndpointID:ClientVpnEndpointId,ClientCIDR:ClientCidrBlock}' --output table
@@ -395,6 +396,8 @@ associate_subnet() {
 }
 
 authorize_ingress() {
+    # Authorize network CIDRs
+    check_aws
     read -p "Please enter the region where your Client VPN endpoint resides (e.g. us-east-1) " region
     aws ec2 describe-client-vpn-endpoints --region "$region" --query \
         ClientVpnEndpoints[].'{Description:Description,EndpointID:ClientVpnEndpointId,ClientCIDR:ClientCidrBlock}' --output table
@@ -441,6 +444,7 @@ authorize_ingress() {
 
 create_route() {
     # Takes in input parameters and creates a route in the specified CVPN route table
+    check_aws
     read -p "Please enter the region where your Client VPN endpoint resides (e.g. us-east-1) " region
     aws ec2 describe-client-vpn-endpoints --region "$region" --query \
         ClientVpnEndpoints[].'{Description:Description,EndpointID:ClientVpnEndpointId,ClientCIDR:ClientCidrBlock}' --output table
