@@ -92,14 +92,14 @@ build_pki () {
 }
 
 build_server () {
-	#Read input for server name and private key encryption
-	read -p "Enter the name for your server: " server
-	read -p "Would you like your server's private key to be encrypted? Note that encrypted keys cannot be uploaded to ACM. (Y/N) " answer
+    #Read input for server name and private key encryption
+    read -p "Enter the name for your server: " server
+    read -p "Would you like your server's private key to be encrypted? Note that encrypted keys cannot be uploaded to ACM. (Y/N) " answer
 	
-	#Switch to EasyRSA directory and build a server cert & key based on above answer
-	$easyrsa
+    #Switch to EasyRSA directory and build a server cert & key based on above answer
+    $easyrsa
 
-	case $answer in
+    case $answer in
         Y|y)
             ./easyrsa build-server-full "$server"
             ;;
@@ -147,7 +147,7 @@ update_config () {
 
 	#Prompt user with $ISSUED contents
 	printf "\nContents of your issued certificates directory:\n----------"
-	ls -l $ISSUED | awk -F\" '{print $2}'
+	ls -lQ $ISSUED | awk -F\" '{print $2}'
 	printf "\n"
 
 	#Read input for client name
@@ -197,7 +197,7 @@ upload_cert () {
 
     #Prompt user with $ISSUED contents
     printf "\nContents of your issued certificates directory:\n----------"
-    ls -l $ISSUED | awk -F\" '{print $2}'
+    ls -lQ $ISSUED | awk -F\" '{print $2}'
     printf "\n"
 
     #Read input for cert filename and check if it exists
