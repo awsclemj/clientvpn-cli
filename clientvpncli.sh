@@ -137,8 +137,8 @@ build_client () {
 
 update_config () {
 	#Prompt user with $CONFDIR contents
-	printf "\nContents of your configuration directory:\n----------"
-	ls -lQ $CONFDIR | awk -F\" '{print $2}'
+	printf "\nContents of your configuration directory:\n----------\n"
+	ls -l $CONFDIR | awk '/^.*\..*$/ {print $NF}'
 	printf "\n"
 
 	#Read input for config filename and check if it exists
@@ -146,8 +146,8 @@ update_config () {
 	check_config "$config"
 
 	#Prompt user with $ISSUED contents
-	printf "\nContents of your issued certificates directory:\n----------"
-	ls -lQ $ISSUED | awk -F\" '{print $2}'
+	printf "\nContents of your issued certificates directory:\n----------\n"
+	ls -l $ISSUED | awk '/^.*\..*$/ {print $NF}'
 	printf "\n"
 
 	#Read input for client name
@@ -196,8 +196,8 @@ upload_cert () {
     check_aws
 
     #Prompt user with $ISSUED contents
-    printf "\nContents of your issued certificates directory:\n----------"
-    ls -lQ $ISSUED | awk -F\" '{print $2}'
+    printf "\nContents of your issued certificates directory:\n----------\n"
+    ls -l $ISSUED | awk '/^.*\..*$/ {print $NF}'
     printf "\n"
 
     #Read input for cert filename and check if it exists
